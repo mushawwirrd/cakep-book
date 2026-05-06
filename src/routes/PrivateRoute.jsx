@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 
 export default function PrivateRoute({ children }) {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(false)
     const [loading, setLoading] = useState(true)
 
     const authCheck = async () => {
@@ -14,7 +14,8 @@ export default function PrivateRoute({ children }) {
             const data = await res.json()
 
             if (res.ok) {
-                setUser(data)
+               
+                setUser(true)
             } else {
                 setUser(null)
             }

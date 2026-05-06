@@ -5,7 +5,7 @@ import Button from "../components/Button/Button"
 import MButton from "../components/Button/MButton"
 //import { GoArrowUpRight } from "react-icons/go"
 
-export default function Beranda() {
+export default function BerandaLogin() {
     const [service, setService] = useState([])
 
     const navigate = useNavigate()
@@ -20,26 +20,25 @@ export default function Beranda() {
 
     }
 
-    useEffect(() => {
+   useEffect(() => {
         getService()
 
       
     }, [])
 
-
     return (
-        <div className="pt-[76px]" >
+        <div className="pt-[76px]">
+
             <Banner />
 
             <div className="max-w-4xl mx-auto mt-5 lg:mt-10">
                 <div >
 
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4  mb-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4">
                         {service.map(s => (
-                            <div className="bg-white p-2 rounded-2xl border border-gray-100 shadow-md ">
+                            <div key={s.id} className="bg-white p-2 rounded-2xl border border-gray-100 shadow-md">
 
                                 <div className=" overflow-hidden rounded-xl">
-                                    
                                     <img src={`http://localhost:3020${s.filePath}`} alt="foto" className=" w-full flex-shrink-0 object-cover h-44 lg:h-56" />
                                 </div>
 
@@ -48,8 +47,8 @@ export default function Beranda() {
 
                                     <div className="flex justify-between items-center mt-4">
                                         <p className="text-xs lg:text-sm font-semibold text-gray-400">Rp {Number(s.price).toLocaleString("id-Id")}</p>
-                                        <MButton click={() => navigate("/login")} lable="Booking"/>
-                                            
+                                        <MButton click={() => navigate("/booking")} lable="Booking" />
+
                                     </div>
                                 </div>
 
